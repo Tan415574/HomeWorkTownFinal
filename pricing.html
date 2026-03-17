@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing – Homework Town</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2040;--navy2:#1A3260;
+  --blue:#2A6DD9;--blue2:#1A50A8;
+  --yellow:#FFD700;--yellow2:#E6A800;--yellow3:#C88C00;
+  --green:#3DBE6E;--green2:#27A058;
+  --coral:#FF6B47;
+  --offwhite:#F8F5EE;
+  --text:#0F2040;--textmid:#3A4B6A;--textlight:#7A8DAA;
+  --border:rgba(15,32,64,.08);
+  --r:20px;--r-lg:28px;--r-xl:40px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;min-height:100vh}
+h1,h2,h3,.fredoka{font-family:'Fredoka',cursive}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5%;
+  background:rgba(248,245,238,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#4A90E2,#1A50A8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.nav-logo-text{font-family:'Fredoka',cursive;font-size:20px;font-weight:600;color:var(--navy)}
+.nav-back{font-size:14px;font-weight:500;color:var(--textmid);text-decoration:none;display:flex;align-items:center;gap:6px;transition:.2s}
+.nav-back:hover{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff;border:none;border-radius:50px;padding:9px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--blue2);transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{
+  padding:120px 5% 64px;
+  text-align:center;
+  background:linear-gradient(180deg,#fff 0%,var(--offwhite) 100%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(42,109,217,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,215,0,.15);color:#7B4A00;
+  border:1px solid rgba(255,215,0,.4);
+  border-radius:50px;padding:6px 16px;
+  font-size:13px;font-weight:600;
+  margin-bottom:20px;
+  animation:fadeup .5s ease both;
+}
+.hero-h1{
+  font-size:clamp(38px,6vw,68px);
+  font-weight:700;color:var(--navy);
+  line-height:1.08;margin-bottom:16px;
+  animation:fadeup .5s ease .08s both;
+}
+.hero-h1 em{font-style:normal;color:var(--blue)}
+.hero-sub{
+  font-size:18px;color:var(--textmid);line-height:1.65;
+  max-width:520px;margin:0 auto 40px;
+  animation:fadeup .5s ease .16s both;
+}
+/* Toggle */
+.toggle-wrap{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#fff;border:1px solid var(--border);
+  border-radius:50px;padding:6px 8px;
+  margin-bottom:56px;
+  animation:fadeup .5s ease .22s both;
+  box-shadow:0 2px 12px rgba(15,32,64,.06);
+}
+.toggle-btn{
+  border:none;background:transparent;
+  border-radius:50px;padding:8px 22px;
+  font-size:14px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;color:var(--textmid);
+  transition:.2s;
+}
+.toggle-btn.active{background:var(--navy);color:#fff}
+.save-pill{
+  background:rgba(61,190,110,.15);color:var(--green2);
+  border-radius:50px;padding:4px 10px;font-size:11px;font-weight:700;
+}
+
+@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CARDS ── */
+.cards-wrap{
+  max-width:1060px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1.08fr 1fr;
+  gap:16px;
+  padding:0 5% 80px;
+  align-items:start;
+}
+.plan-card{
+  background:#fff;
+  border-radius:var(--r-xl);
+  border:1.5px solid var(--border);
+  overflow:hidden;
+  transition:.3s;
+  position:relative;
+}
+.plan-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(15,32,64,.1)}
+.plan-card.featured{
+  border-color:var(--yellow);
+  border-width:2px;
+  box-shadow:0 16px 48px rgba(255,215,0,.2);
+}
+.plan-card.featured:hover{box-shadow:0 28px 70px rgba(255,215,0,.25)}
+.popular-badge{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  background:var(--yellow);color:#7B4A00;
+  font-family:'Fredoka',cursive;
+  font-size:13px;font-weight:600;
+  padding:5px 20px;
+  border-radius:0 0 16px 16px;
+  white-space:nowrap;
+  box-shadow:0 3px 10px rgba(255,215,0,.4);
+}
+.card-header{padding:36px 32px 28px}
+.plan-card.featured .card-header{padding-top:44px}
+.plan-icon{font-size:36px;margin-bottom:14px}
+.plan-name{font-size:22px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.plan-desc{font-size:14px;color:var(--textlight);line-height:1.55;margin-bottom:22px}
+.plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.price-currency{font-size:22px;font-weight:600;color:var(--textmid);margin-top:6px}
+.price-num{font-family:'Fredoka',cursive;font-size:56px;font-weight:600;color:var(--navy);line-height:1}
+.price-period{font-size:14px;color:var(--textlight);margin-left:2px}
+.price-annual{font-size:12px;color:var(--textlight);margin-bottom:22px;min-height:18px}
+.price-annual strong{color:var(--green2)}
+.plan-cta{
+  display:block;width:100%;
+  border-radius:50px;padding:14px;
+  font-size:15px;font-weight:700;
+  cursor:pointer;transition:.2s;
+  font-family:'DM Sans',sans-serif;
+  text-align:center;text-decoration:none;
+  border:none;
+}
+.cta-outline{background:transparent;border:1.5px solid var(--border);color:var(--navy)}
+.cta-outline:hover{border-color:var(--blue);color:var(--blue);background:rgba(42,109,217,.04)}
+.cta-primary{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(42,109,217,.35)}
+.cta-primary:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 20px rgba(42,109,217,.4)}
+.cta-gold{background:var(--yellow);color:#7B4A00;box-shadow:0 4px 0 var(--yellow3)}
+.cta-gold:hover{transform:translateY(-3px);box-shadow:0 7px 0 var(--yellow3)}
+.cta-gold:active{transform:translateY(0);box-shadow:0 2px 0 var(--yellow3)}
+.divider{height:1px;background:var(--border);margin:0 32px}
+.feat-list{padding:24px 32px 32px;display:flex;flex-direction:column;gap:11px}
+.feat-row{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--textmid);line-height:1.5}
+.feat-check{
+  width:20px;height:20px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px;
+}
+.fc-yes{background:rgba(61,190,110,.15);color:var(--green2)}
+.fc-no{background:rgba(15,32,64,.06);color:var(--textlight)}
+.feat-row.muted{color:var(--textlight)}
+.feat-label{flex:1}
+.feat-label strong{color:var(--navy);font-weight:600}
+.coming-chip{font-size:10px;font-weight:700;background:rgba(42,109,217,.1);color:var(--blue);border-radius:50px;padding:2px 8px;white-space:nowrap;margin-left:6px;flex-shrink:0}
+.section-label{font-size:10px;font-weight:700;color:var(--textlight);text-transform:uppercase;letter-spacing:.8px;padding:4px 0 2px}
+
+/* ── COMPARISON TABLE ── */
+.compare-section{padding:0 5% 80px;max-width:1060px;margin:0 auto}
+.compare-title{font-size:28px;font-weight:700;color:var(--navy);margin-bottom:28px;text-align:center}
+.compare-table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(15,32,64,.05)}
+.compare-table th{padding:16px 20px;font-size:13px;font-weight:600;color:var(--textlight);text-transform:uppercase;letter-spacing:.6px;background:var(--offwhite);border-bottom:1px solid var(--border);text-align:center}
+.compare-table th:first-child{text-align:left}
+.compare-table td{padding:14px 20px;font-size:14px;color:var(--textmid);border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}
+.compare-table td:first-child{text-align:left;font-weight:500;color:var(--navy)}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:rgba(42,109,217,.02)}
+.ct-yes{color:var(--green2);font-size:18px}
+.ct-no{color:var(--textlight);font-size:18px}
+.ct-feat{color:var(--blue);font-size:11px;font-weight:700;background:rgba(42,109,217,.08);border-radius:50px;padding:3px 10px}
+.compare-table .feat-col{font-weight:700;color:var(--yellow2)}
+.col-free{color:var(--textmid)}
+.col-family{color:var(--blue);font-weight:700}
+
+/* ── FAQ ── */
+.faq-section{background:#fff;padding:72px 5%}
+.faq-inner{max-width:700px;margin:0 auto}
+.faq-title{font-size:34px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:40px}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0;cursor:pointer}
+.faq-q{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:var(--navy);gap:16px}
+.faq-icon{width:26px;height:26px;border-radius:50%;background:var(--offwhite);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;transition:.25s;color:var(--textmid)}
+.faq-a{font-size:14px;color:var(--textmid);line-height:1.7;max-height:0;overflow:hidden;transition:.3s;padding-top:0}
+.faq-item.open .faq-a{max-height:200px;padding-top:10px}
+.faq-item.open .faq-icon{transform:rotate(180deg);background:var(--blue);color:#fff}
+
+/* ── BOTTOM CTA ── */
+.bottom-cta{
+  padding:80px 5%;
+  background:linear-gradient(135deg,var(--navy2),var(--navy));
+  text-align:center;position:relative;overflow:hidden;
+}
+.bottom-cta::before{
+  content:'';position:absolute;
+  top:-150px;right:-150px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(255,215,0,.1),transparent 65%);
+  pointer-events:none;
+}
+.bottom-cta::after{
+  content:'';position:absolute;
+  bottom:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(42,109,217,.15),transparent 65%);
+  pointer-events:none;
+}
+.bottom-cta h2{font-size:clamp(30px,4vw,52px);font-weight:700;color:#fff;margin-bottom:12px;position:relative;z-index:1}
+.bottom-cta p{font-size:17px;color:rgba(255,255,255,.65);margin-bottom:36px;position:relative;z-index:1}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-gold{
+  background:var(--yellow);color:#7B4A00;
+  border:none;border-radius:50px;
+  padding:16px 36px;font-size:16px;font-weight:700;
+  cursor:pointer;transition:.2s;
+  font-family:'DM Sans',sans-serif;
+  box-shadow:0 5px 0 var(--yellow3);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--yellow3)}
+.btn-ghost{
+  background:rgba(255,255,255,.1);color:#fff;
+  border:1.5px solid rgba(255,255,255,.25);border-radius:50px;
+  padding:16px 36px;font-size:16px;font-weight:600;
+  cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;
+  text-decoration:none;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+.trust-chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}
+.trust-chip{font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:5px}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);padding:32px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.3)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .cards-wrap{grid-template-columns:1fr;max-width:440px}
+  .compare-section{overflow-x:auto}
+  .compare-table{min-width:560px}
+}
+@media(max-width:600px){
+  .nav-back span{display:none}
+  .hero-h1{font-size:36px}
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:.65s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="homework-town-homepage.html" class="nav-back">← <span>Back to Home</span></a>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🏘️</div>
+    <span class="nav-logo-text">Homework Town</span>
+  </a>
+  <a href="#start" class="nav-cta">Start Free Trial</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">💎 Simple, honest pricing</div>
+  <h1 class="hero-h1">One price.<br><em>The whole family.</em></h1>
+  <p class="hero-sub">No per-child fees. No feature locks. Start free for 14 days — no credit card needed.</p>
+
+  <!-- Billing toggle -->
+  <div class="toggle-wrap">
+    <button class="toggle-btn active" id="btn-monthly" onclick="setbilling('monthly')">Monthly</button>
+    <button class="toggle-btn" id="btn-annual" onclick="setbilling('annual')">
+      Annual &nbsp;<span class="save-pill">Save 20%</span>
+    </button>
+  </div>
+</section>
+
+<!-- PLAN CARDS -->
+<div class="cards-wrap reveal">
+
+  <!-- FREE TRIAL -->
+  <div class="plan-card">
+    <div class="card-header">
+      <div class="plan-icon">🌱</div>
+      <div class="plan-name">Free Trial</div>
+      <div class="plan-desc">14 days of full access. No card required. See if your kids love it first.</div>
+      <div class="plan-price">
+        <span class="price-currency">R</span>
+        <span class="price-num">0</span>
+      </div>
+      <div class="price-annual">for 14 days</div>
+      <a href="#start" class="plan-cta cta-outline">Start Free Trial →</a>
+    </div>
+    <div class="divider"></div>
+    <div class="feat-list">
+      <div class="section-label">What's included</div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Up to <strong>3 tasks</strong> per day</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Town map & all buildings</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Job board & coin system</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Basic parent dashboard</div></div>
+      <div class="feat-row muted"><div class="feat-check fc-no">–</div><div class="feat-label">House customisation</div></div>
+      <div class="feat-row muted"><div class="feat-check fc-no">–</div><div class="feat-label">Parent Rewards Centre</div></div>
+      <div class="feat-row muted"><div class="feat-check fc-no">–</div><div class="feat-label">Push notifications</div></div>
+      <div class="feat-row muted"><div class="feat-check fc-no">–</div><div class="feat-label">Progress reports</div></div>
+    </div>
+  </div>
+
+  <!-- FAMILY (FEATURED) -->
+  <div class="plan-card featured">
+    <div class="popular-badge">⭐ Most Popular</div>
+    <div class="card-header">
+      <div class="plan-icon">🏘️</div>
+      <div class="plan-name">Family</div>
+      <div class="plan-desc">Everything unlocked. All children in one account. The full Homework Town experience.</div>
+      <div class="plan-price">
+        <span class="price-currency">R</span>
+        <span class="price-num" id="price-main">120</span>
+        <span class="price-period" id="price-period">/month</span>
+      </div>
+      <div class="price-annual" id="price-annual-note">&nbsp;</div>
+      <a href="#start" class="plan-cta cta-gold">🎉 Start 14-Day Free Trial</a>
+    </div>
+    <div class="divider"></div>
+    <div class="feat-list">
+      <div class="section-label">Everything in Free, plus</div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label"><strong>Unlimited</strong> tasks & chores</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label"><strong>Multiple children</strong> per account</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">House customisation & shop</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Parent Rewards Centre</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Email & push notifications</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Weekly progress reports</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Town customisation</div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Priority email support</div></div>
+    </div>
+  </div>
+
+  <!-- SCHOOL -->
+  <div class="plan-card">
+    <div class="card-header">
+      <div class="plan-icon">🏫</div>
+      <div class="plan-name">School</div>
+      <div class="plan-desc">For teachers using Homework Town across a classroom or multiple grades.</div>
+      <div class="plan-price">
+        <span class="price-num" style="font-size:38px;margin-top:10px">Coming soon</span>
+      </div>
+      <div class="price-annual">Classroom mode in development</div>
+      <a href="#start" class="plan-cta cta-primary">Join the Waitlist →</a>
+    </div>
+    <div class="divider"></div>
+    <div class="feat-list">
+      <div class="section-label">Planned features</div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Everything in Family<span class="coming-chip">Soon</span></div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Class roster management<span class="coming-chip">Soon</span></div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Bulk task assignment<span class="coming-chip">Soon</span></div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Class leaderboard<span class="coming-chip">Soon</span></div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">Parent communication tools<span class="coming-chip">Soon</span></div></div>
+      <div class="feat-row"><div class="feat-check fc-yes">✓</div><div class="feat-label">School billing & invoicing<span class="coming-chip">Soon</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="compare-section reveal">
+  <h2 class="compare-title">Plan comparison</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:40%">Feature</th>
+        <th class="col-free">Free Trial</th>
+        <th class="col-family">Family · R120/mo</th>
+        <th>School</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Daily tasks</td><td>Up to 3</td><td><span class="ct-feat">Unlimited</span></td><td><span class="ct-feat">Unlimited</span></td></tr>
+      <tr><td>Children per account</td><td>1</td><td><span class="ct-feat">Unlimited</span></td><td><span class="ct-feat">Whole class</span></td></tr>
+      <tr><td>Town map & buildings</td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Job board</td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Coin & bank system</td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>House customisation</td><td><span class="ct-no">–</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Parent Rewards Centre</td><td><span class="ct-no">–</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Push & email notifications</td><td><span class="ct-no">–</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Weekly progress reports</td><td><span class="ct-no">–</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Behaviour approval</td><td><span class="ct-no">–</span></td><td><span class="ct-yes">✓</span></td><td><span class="ct-yes">✓</span></td></tr>
+      <tr><td>Class roster & bulk tasks</td><td><span class="ct-no">–</span></td><td><span class="ct-no">–</span></td><td><span class="ct-feat">Coming soon</span></td></tr>
+      <tr><td>Class leaderboard</td><td><span class="ct-no">–</span></td><td><span class="ct-no">–</span></td><td><span class="ct-feat">Coming soon</span></td></tr>
+      <tr><td>Priority support</td><td><span class="ct-no">–</span></td><td>Email</td><td>Dedicated</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner reveal">
+    <h2 class="faq-title">Pricing questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Do I need a credit card to start the free trial?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">No. You get 14 days of full Family plan access with no credit card required. At the end of the trial we'll ask if you want to continue — you'll only enter payment details then.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many children can I add?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">The Family plan covers all children in your household for one flat price of R120/month. There are no per-child fees — add as many as you need.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What payment methods do you accept?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">We accept all major credit and debit cards via PayFast, including Visa, Mastercard, and EFT. Monthly billing is automatic and you can cancel any time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens when the free trial ends?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">Your account pauses and no charge is made. Your data and your child's town are saved for 30 days while you decide. Subscribe at any time to pick up exactly where you left off.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel my subscription?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">Yes — cancel any time from your account settings with one click. You keep access until the end of your current billing period and are never charged again.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a discount for annual billing?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">Yes! Switch to annual billing and save 20% — that's R1,152/year instead of R1,440. Toggle between monthly and annual above to see the price difference.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer refunds?<span class="faq-icon">↓</span></div>
+      <div class="faq-a">If you subscribed and are unhappy in the first 7 days, contact us and we'll issue a full refund — no questions asked.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta" id="start">
+  <h2>Ready to make homework fun?</h2>
+  <p>Join 2,400+ South African families. Start free — no credit card needed.</p>
+  <div class="cta-row">
+    <button class="btn-gold">🎉 Start 14-Day Free Trial</button>
+    <a href="homework-town-homepage.html" class="btn-ghost">Learn More</a>
+  </div>
+  <div class="trust-chips">
+    <span class="trust-chip">✓ No credit card</span>
+    <span class="trust-chip">·</span>
+    <span class="trust-chip">✓ Cancel any time</span>
+    <span class="trust-chip">·</span>
+    <span class="trust-chip">✓ Child-safe & POPIA compliant</span>
+    <span class="trust-chip">·</span>
+    <span class="trust-chip">✓ Made in South Africa 🇿🇦</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Homework Town · Made with ❤️ in South Africa</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+    <a href="homework-town-homepage.html">Home</a>
+  </div>
+</footer>
+
+<script>
+let billing = 'monthly';
+function setbilling(mode){
+  billing = mode;
+  document.getElementById('btn-monthly').classList.toggle('active', mode==='monthly');
+  document.getElementById('btn-annual').classList.toggle('active', mode==='annual');
+  const priceEl = document.getElementById('price-main');
+  const periodEl = document.getElementById('price-period');
+  const noteEl = document.getElementById('price-annual-note');
+  if(mode==='annual'){
+    priceEl.textContent = '96';
+    periodEl.textContent = '/month';
+    noteEl.innerHTML = '<strong style="color:var(--green2)">Save R288/year</strong> — billed R1,152 annually';
+  } else {
+    priceEl.textContent = '120';
+    periodEl.textContent = '/month';
+    noteEl.innerHTML = '&nbsp;';
+  }
+}
+
+// FAQ
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+
+// Scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+</script>
+</body>
+</html>
