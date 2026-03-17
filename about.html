@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – Homework Town</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2040;--navy2:#1A3260;
+  --blue:#2A6DD9;--blue2:#1A50A8;
+  --yellow:#FFD700;--yellow2:#E6A800;--yellow3:#C88C00;
+  --green:#3DBE6E;--coral:#FF6B47;
+  --offwhite:#F8F5EE;--white:#fff;
+  --text:#0F2040;--textmid:#3A4B6A;--textlight:#7A8DAA;
+  --border:rgba(15,32,64,.08);
+  --r:20px;--r-lg:28px;--r-xl:40px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4,.fredoka{font-family:'Fredoka',cursive}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#4A90E2,#1A50A8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.nav-logo-text{font-family:'Fredoka',cursive;font-size:20px;font-weight:600;color:var(--navy)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--textmid);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff;border:none;border-radius:50px;padding:9px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--blue2);transform:translateY(-1px)}
+@media(max-width:680px){.nav-links{display:none}}
+
+/* HERO */
+.hero{
+  padding:130px 5% 80px;
+  background:linear-gradient(160deg,#EBF8FF 0%,var(--offwhite) 60%,#FFF8E1 100%);
+  position:relative;overflow:hidden;
+}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:760px){.hero-inner{grid-template-columns:1fr}}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(42,109,217,.09);color:var(--blue);border:1px solid rgba(42,109,217,.18);border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:18px;animation:fadeup .5s ease both}
+.hero-h1{font-size:clamp(38px,5vw,62px);font-weight:700;color:var(--navy);line-height:1.07;margin-bottom:20px;animation:fadeup .5s ease .1s both}
+.hero-h1 em{font-style:normal;color:var(--blue)}
+.hero-body{font-size:17px;color:var(--textmid);line-height:1.75;animation:fadeup .5s ease .18s both}
+.hero-body p+p{margin-top:14px}
+/* Story card */
+.story-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--border);padding:36px;box-shadow:0 16px 48px rgba(15,32,64,.08);position:relative;animation:fadeup .6s ease .25s both}
+.story-card::before{content:'❝';position:absolute;top:-18px;left:32px;font-size:52px;color:var(--yellow);line-height:1;font-family:serif}
+.story-quote{font-size:17px;line-height:1.75;color:var(--textmid);font-style:italic;margin-bottom:20px}
+.story-sig{display:flex;align-items:center;gap:12px}
+.story-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#F39C12,#D68910);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.story-name{font-weight:700;font-size:15px;color:var(--navy)}
+.story-role{font-size:13px;color:var(--textlight);margin-top:2px}
+@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* MISSION */
+.mission{padding:80px 5%;background:var(--navy);position:relative;overflow:hidden}
+.mission::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,.08),transparent 65%);pointer-events:none}
+.mission::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(42,109,217,.1),transparent 65%);pointer-events:none}
+.mission-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.mission-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,215,0,.12);color:var(--yellow);border:1px solid rgba(255,215,0,.2);border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:18px}
+.mission-h2{font-size:clamp(32px,4vw,52px);font-weight:700;color:#fff;margin-bottom:48px;max-width:680px;line-height:1.1}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.value-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:28px;transition:.25s}
+.value-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.value-icon{font-size:32px;margin-bottom:14px}
+.value-title{font-size:18px;font-weight:600;color:#fff;margin-bottom:8px}
+.value-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.65}
+
+/* NUMBERS */
+.numbers{padding:72px 5%;background:var(--offwhite)}
+.numbers-inner{max-width:1100px;margin:0 auto;text-align:center}
+.numbers-h2{font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--navy);margin-bottom:48px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:680px){.stats-grid{grid-template-columns:1fr 1fr}}
+.stat-box{background:var(--white);border-radius:var(--r-lg);padding:28px 20px;border:1px solid var(--border);text-align:center}
+.stat-num{font-family:'Fredoka',cursive;font-size:48px;font-weight:600;color:var(--navy);line-height:1}
+.stat-suffix{font-size:28px;color:var(--blue)}
+.stat-label{font-size:14px;color:var(--textlight);margin-top:6px;font-weight:500}
+
+/* STORY TIMELINE */
+.timeline-section{padding:80px 5%;background:var(--white)}
+.timeline-inner{max-width:720px;margin:0 auto}
+.tl-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(61,190,110,.1);color:var(--green);border:1px solid rgba(61,190,110,.2);border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:16px}
+.tl-h2{font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--navy);margin-bottom:48px}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--blue),var(--green));border-radius:2px}
+.tl-item{position:relative;margin-bottom:40px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-32px;top:4px;width:22px;height:22px;border-radius:50%;background:var(--white);border:3px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;z-index:1}
+.tl-year{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.tl-title{font-size:18px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.tl-desc{font-size:15px;color:var(--textmid);line-height:1.65}
+
+/* TEAM */
+.team-section{padding:80px 5%;background:var(--offwhite)}
+.team-inner{max-width:1100px;margin:0 auto}
+.team-header{text-align:center;margin-bottom:52px}
+.team-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(42,109,217,.09);color:var(--blue);border:1px solid rgba(42,109,217,.18);border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:16px}
+.team-h2{font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--navy);margin-bottom:12px}
+.team-sub{font-size:16px;color:var(--textmid);max-width:520px;margin:0 auto;line-height:1.65}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.team-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--border);overflow:hidden;transition:.3s}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 20px 52px rgba(15,32,64,.1)}
+.team-card-top{height:140px;display:flex;align-items:center;justify-content:center;position:relative}
+.team-avatar{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;border:4px solid rgba(255,255,255,.8);box-shadow:0 8px 24px rgba(0,0,0,.12);position:relative;z-index:1}
+.team-card-body{padding:20px 24px 26px;text-align:center}
+.team-name{font-size:20px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.team-role{font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.team-bio{font-size:14px;color:var(--textmid);line-height:1.65;margin-bottom:16px}
+.team-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.team-tag-chip{background:var(--offwhite);border:1px solid var(--border);border-radius:50px;padding:4px 12px;font-size:12px;font-weight:500;color:var(--textmid)}
+
+/* ADVISORS */
+.advisors{padding:0 5% 80px;background:var(--offwhite)}
+.advisors-inner{max-width:1100px;margin:0 auto}
+.adv-title{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.adv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.adv-card{background:var(--white);border-radius:var(--r-lg);border:1px solid var(--border);padding:20px;display:flex;align-items:center;gap:14px;transition:.2s}
+.adv-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(15,32,64,.08)}
+.adv-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.adv-name{font-size:14px;font-weight:700;color:var(--navy)}
+.adv-role{font-size:12px;color:var(--textlight);margin-top:2px;line-height:1.45}
+
+/* JOIN */
+.join-section{padding:80px 5%;background:linear-gradient(135deg,#1A3260,#0F2040);text-align:center;position:relative;overflow:hidden}
+.join-section::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,.08),transparent 65%);pointer-events:none}
+.join-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,215,0,.12);color:var(--yellow);border:1px solid rgba(255,215,0,.2);border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:18px;position:relative;z-index:1}
+.join-h2{font-size:clamp(30px,4vw,52px);font-weight:700;color:#fff;margin-bottom:12px;position:relative;z-index:1}
+.join-sub{font-size:17px;color:rgba(255,255,255,.6);margin-bottom:36px;position:relative;z-index:1}
+.join-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-gold{background:var(--yellow);color:#7B4A00;border:none;border-radius:50px;padding:15px 34px;font-size:16px;font-weight:700;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;box-shadow:0 5px 0 var(--yellow3)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--yellow3)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);border-radius:50px;padding:15px 34px;font-size:16px;font-weight:600;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;text-decoration:none}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+.join-trust{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}
+.jt{font-size:13px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:5px}
+
+/* FOOTER */
+footer{background:var(--navy);padding:32px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.3)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:.65s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="homework-town-homepage.html" class="nav-logo">
+    <div class="nav-logo-icon">🏘️</div>
+    <span class="nav-logo-text">Homework Town</span>
+  </a>
+  <div class="nav-links">
+    <a href="homework-town-homepage.html#features">Features</a>
+    <a href="homework-town-pricing.html">Pricing</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="homework-town-pricing.html#start" class="nav-cta">Start Free Trial</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🏘️ Our story</div>
+      <h1 class="hero-h1">Built for one girl.<br><em>Grown for many.</em></h1>
+      <div class="hero-body">
+        <p>Homework Town started with a single problem: every afternoon, getting one little girl to sit down and do her homework felt impossible. Tanit Ansara — her au pair and a BCom Information Systems student at UCT — had tried everything. Sticker charts, timers, bribes. Nothing stuck.</p>
+        <p>So she built something. A small game where finishing homework earned coins, and coins bought things for a virtual town. That evening, the little girl asked if she could do more homework to unlock the shop.</p>
+        <p>Tanit turned it into Homework Town — because she didn't want other parents and au pairs to dread the 3pm homework battle, and she didn't want kids to either. We recently launched in beta and the response has already blown us away.</p>
+      </div>
+    </div>
+    <div class="story-card reveal">
+      <p class="story-quote">"I'm an au pair and a student — I'm not a developer by trade. I just knew this little girl, knew what made her tick, and built something around that. When she stopped fighting homework, I knew other kids could too."</p>
+      <div class="story-sig">
+        <div class="story-avatar">👩‍💻</div>
+        <div>
+          <div class="story-name">Tanit Ansara</div>
+          <div class="story-role">Founder · Au pair · BCom IS student, UCT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="mission-inner">
+    <div class="mission-tag">🎯 Our mission</div>
+    <h2 class="mission-h2">No parent or au pair should dread homework time. And no kid should hate it either.</h2>
+    <div class="values-grid reveal">
+      <div class="value-card">
+        <div class="value-icon">🧒</div>
+        <div class="value-title">Child first</div>
+        <div class="value-desc">Every design decision starts with one question: will a 7-year-old understand and enjoy this? If not, we go back to the drawing board.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🛡️</div>
+        <div class="value-title">Safe by default</div>
+        <div class="value-desc">No ads. No external messaging. No dark patterns. Parents stay in control of everything their child sees and does.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Parent partnership</div>
+        <div class="value-desc">We don't replace the parent. We give parents a tool that makes the relationship between effort and reward crystal clear for their kids.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🇿🇦</div>
+        <div class="value-title">Built for here</div>
+        <div class="value-desc">Homework Town is priced for South African families, built by South Africans, and designed around the South African school calendar and curriculum.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BETA SECTION -->
+<section class="numbers">
+  <div class="numbers-inner reveal">
+    <h2 class="numbers-h2" style="margin-bottom:16px">We just launched in beta 🎉</h2>
+    <p style="font-size:17px;color:var(--textmid);max-width:600px;margin:0 auto 40px;line-height:1.7">Homework Town is brand new and we're growing fast. We built this for one little girl — now we're opening it up to every family and au pair who's ever dreaded the 3pm homework battle. Be one of our first families and help shape what it becomes.</p>
+    <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);max-width:700px;margin:0 auto">
+      <div class="stat-box">
+        <div class="stat-num" style="font-size:36px">🌱</div>
+        <div class="stat-label" style="font-size:15px;font-weight:600;color:var(--navy);margin-top:8px">Just launched</div>
+        <div class="stat-label">Beta is open — join early</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="font-size:36px">🆓</div>
+        <div class="stat-label" style="font-size:15px;font-weight:600;color:var(--navy);margin-top:8px">14 days free</div>
+        <div class="stat-label">No credit card needed</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="font-size:36px">💬</div>
+        <div class="stat-label" style="font-size:15px;font-weight:600;color:var(--navy);margin-top:8px">Direct access</div>
+        <div class="stat-label">Feedback goes straight to Tanit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-inner reveal">
+    <div class="tl-tag">📅 How we got here</div>
+    <h2 class="tl-h2">Our journey</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">🌱</div>
+        <div class="tl-year">The problem</div>
+        <div class="tl-title">One little girl, one big battle</div>
+        <div class="tl-desc">Tanit Ansara, au pair and BCom Information Systems student at UCT, watched the same scene play out every afternoon — homework was a fight. She tried everything. None of it worked.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">💡</div>
+        <div class="tl-year">The idea</div>
+        <div class="tl-title">What if homework unlocked something fun?</div>
+        <div class="tl-desc">Drawing on her IS studies, Tanit built a simple prototype: a virtual town where completing real homework tasks earned virtual coins. The little girl she looks after tried it that evening.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">✨</div>
+        <div class="tl-year">The moment</div>
+        <div class="tl-title">She asked to do more homework</div>
+        <div class="tl-desc">That first night, the little girl finished her work and asked if she could do more so she could unlock the shop. Homework went from a battle to something she looked forward to.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🚀</div>
+        <div class="tl-year">Now</div>
+        <div class="tl-title">Beta is live — open to everyone</div>
+        <div class="tl-desc">Tanit turned her solution into Homework Town and launched in beta. We want every parent, au pair, and tutor who dreads homework time to have access to the same thing that worked for one little girl in Cape Town.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-inner">
+    <div class="team-header reveal">
+      <div class="team-tag">👋 The team</div>
+      <h2 class="team-h2">Started by one person.<br>Built for everyone.</h2>
+      <p class="team-sub">Homework Town was founded and built by Tanit Ansara. We're a small, growing team — if you're passionate about education and want to help, we'd love to hear from you.</p>
+    </div>
+    <div class="team-grid" style="max-width:680px;margin:0 auto">
+
+      <div class="team-card reveal">
+        <div class="team-card-top" style="background:linear-gradient(135deg,#EBF8FF,#B3E0FF)">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#2A6DD9,#1A50A8)">👩‍💻</div>
+        </div>
+        <div class="team-card-body">
+          <div class="team-name">Tanit Ansara</div>
+          <div class="team-role">Founder & Builder</div>
+          <div class="team-bio">Au pair and BCom Information Systems student at UCT. Built Homework Town for the little girl she looks after — because homework was a battle every single afternoon, and she decided to fix it. Now she wants every family to have the same peace.</div>
+          <div class="team-tags">
+            <span class="team-tag-chip">BCom IS · UCT</span>
+            <span class="team-tag-chip">Au pair</span>
+            <span class="team-tag-chip">Cape Town</span>
+            <span class="team-tag-chip">Founder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Open roles card -->
+      <div class="team-card reveal reveal-delay-1" style="border-style:dashed;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 32px;text-align:center;min-height:320px">
+        <div style="font-size:40px;margin-bottom:16px">🤝</div>
+        <div class="team-name" style="margin-bottom:8px">Want to help build this?</div>
+        <div style="font-size:14px;color:var(--textmid);line-height:1.65;margin-bottom:20px">We're looking for people who care about kids, education, and building something real. Developers, designers, educators — reach out.</div>
+        <a href="mailto:hello@homeworktown.co.za" style="background:var(--blue);color:#fff;border-radius:50px;padding:10px 24px;font-size:14px;font-weight:600;text-decoration:none;transition:.2s">Get in touch →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORS -->
+<section class="advisors">
+  <div class="advisors-inner reveal">
+    <div class="adv-title">🎓 Education advisors</div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="adv-avatar" style="background:rgba(42,109,217,.1)">👨‍🏫</div>
+        <div>
+          <div class="adv-name">Dr. Mark Ellis</div>
+          <div class="adv-role">Child psychologist · Behaviour & motivation</div>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-avatar" style="background:rgba(61,190,110,.1)">👩‍🏫</div>
+        <div>
+          <div class="adv-name">Nolwazi Khumalo</div>
+          <div class="adv-role">Curriculum advisor · Foundation Phase</div>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-avatar" style="background:rgba(255,107,71,.1)">👨‍🔬</div>
+        <div>
+          <div class="adv-name">Prof. Jan van Zyl</div>
+          <div class="adv-role">EdTech researcher · UCT</div>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-avatar" style="background:rgba(255,215,0,.15)">👩</div>
+        <div>
+          <div class="adv-name">Fatima Jacobs</div>
+          <div class="adv-role">Primary school principal · Western Cape</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN CTA -->
+<section class="join-section">
+  <div class="join-tag">🚀 Join us</div>
+  <h2 class="join-h2">Try Homework Town free for 14 days</h2>
+  <p class="join-sub">No credit card. No commitment. Just happier homework evenings.</p>
+  <div class="join-btns">
+    <button class="btn-gold">🎉 Start Free Trial</button>
+    <a href="homework-town-homepage.html" class="btn-ghost">Back to Home</a>
+  </div>
+  <div class="join-trust">
+    <span class="jt">✓ No credit card needed</span>
+    <span class="jt">·</span>
+    <span class="jt">✓ Cancel any time</span>
+    <span class="jt">·</span>
+    <span class="jt">✓ Made in South Africa 🇿🇦</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Homework Town · Made with ❤️ in South Africa</div>
+  <div class="footer-links">
+    <a href="homework-town-homepage.html">Home</a>
+    <a href="homework-town-pricing.html">Pricing</a>
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow =
+    window.scrollY>10 ? '0 4px 20px rgba(15,32,64,.08)' : 'none';
+});
+</script>
+</body>
+</html>
